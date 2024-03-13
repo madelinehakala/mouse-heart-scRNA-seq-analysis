@@ -1,10 +1,12 @@
-# Overview
+# scRNA-Seq Mouse Heart Project - Design Document
+
+## Overview
 The overall goal of our project is to build a pipeline to analyze scRNA-Seq data from the mouse heart. We are aiming to quantify and compare the expression levels of genes that are known to be implicated in muscle contraction.
 
-# Context
+## Context
 
-# Goals & Non-Goals
+## Goals & Non-Goals
 
-# Proposed Solutions
+## Proposed Solutions
 
-# Milestones
+## Milestones
