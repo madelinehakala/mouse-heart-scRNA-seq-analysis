@@ -10,6 +10,7 @@ The general workflow is as follows:
 4. Retreive the expression levels of 20-30 muscle contraction genes (specifically in the muscle cells), then sort and write them to an output file.
 
 ## Context
+Historically, researchers have assumed that many tissues in the heart exhibit relative tissue and cell homogeneity. With the rise of scRNA-Seq technology, we are now able to compare the expression levels of genes in different cell types, which has begun to challenge this assumption of homogeneity. Through selecting for muscle cells in a scRNA-Seq dataset, we are able to assess the true level of homogeneity present in the muscle tissue of the mouse heart.
 
 ## Goals & Non-Goals
 
