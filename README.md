@@ -12,6 +12,7 @@ This project utilizes scRNA-Seq data from the mouse heart, which was collected b
 6. Output these findings to a well-organized table for additional analysis.
 
 # Running Our Code
+To run our code, utilize the following command:
 ```
 python3 wrapper.py -o [OUTPUT DIRECTORY] -l [LOG FILE NAME]
 ```
