@@ -7,5 +7,5 @@ This project utilizes scRNA-Seq data from the mouse heart, which was collected b
 
 # Running Our Code
 ```
-INSERT COMMAND HERE
+python3 wrapper.py -o [OUTPUT DIRECTORY] -l [LOG FILE NAME]
 ```
