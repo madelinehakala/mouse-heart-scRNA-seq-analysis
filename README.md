@@ -17,4 +17,8 @@ To run our code, utilize the following command:
 python3 wrapper.py -o [OUTPUT DIRECTORY] -l [LOG FILE NAME]
 ```
 ## Required Dependencies
-LIST REQUIRED PACKAGES HERE
+- os (used to pass command line arguments to the terminal from python script)
+- gzip (used to unzip a specified zip file taken as input)
+- numpy (used for data manipulation)
+- pandas (used for additional data manipulation)
+- scipy (used to read a MatrixMarket object into a dataframe using the mmread function)
