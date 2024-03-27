@@ -16,6 +16,13 @@ To run our code, utilize the following command:
 ```
 python3 wrapper.py -o [OUTPUT DIRECTORY] -l [LOG FILE NAME]
 ```
+## Data Format
+For Seurat (and the rest of our code) to work, data must be in a very specific format.
+
+dataZone1 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
+
+dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
+
 ## Required Dependencies
 - os (used to pass command line arguments to the terminal from python script)
 - gzip (used to unzip a specified zip file taken as input)
