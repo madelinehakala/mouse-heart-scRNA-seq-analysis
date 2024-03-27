@@ -28,12 +28,12 @@ def createLog(logFileName):
   logFile = open(logFileName, 'w')
   return logFile
 
-def callMatrixReader(matrixReaderScript):
-  '''Function to call the sleuth script, which is an Rscript.'''
-  callingScript = f'Rscript {matrixReaderScript}'
+def callSeurat(seuratScript):
+  '''Function to call the Seurat script, which is an Rscript.'''
+  callingScript = f'Rscript {seuratScript}'
   os.system(callingScript)
-  logFile.write('Reading data in matrix format... COMPLETE')
-  logFile.write('\n------------------------------\n')
+  logFile.write('Running Seurat... COMPLETE')
+  logFile.write('\n-------------------------------------------\n')
   
   
 # retrieving command line arguments and assigning to variables
@@ -41,6 +41,6 @@ args = check_arg(sys.argv[1:])
 outputDir = args.outputDirectory
 logFileName = args.logFileName
 
-initializeOutputDirectory(outputDir)
+#initializeOutputDirectory(outputDir)
 logFile = createLog(logFileName)
-matrixRead = callMatrixReader('../readMatrixData.R')
+seurat = callSeurat('seurat.R')
