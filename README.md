@@ -21,7 +21,7 @@ For Seurat (and the rest of our code) to work, data must be in a very specific f
 
 dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 
-dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
+dataZone3 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 
 ## Required Dependencies
 - os (used to pass command line arguments to the terminal from python script)
