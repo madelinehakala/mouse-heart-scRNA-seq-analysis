@@ -24,8 +24,7 @@ dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 dataZone3 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 
 ## Required Dependencies
-- os (used to pass command line arguments to the terminal from python script)
-- gzip (used to unzip a specified zip file taken as input)
-- numpy (used for data manipulation)
-- pandas (used for additional data manipulation)
-- scipy (used to read a MatrixMarket object into a dataframe using the mmread function)
+- Seurat
+- Numpy
+- Pandas
+- Scipy
