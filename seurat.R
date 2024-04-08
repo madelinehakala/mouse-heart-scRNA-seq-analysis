@@ -18,6 +18,11 @@ plot1 + plot2
 zone2 = subset(zone2, subset = nFeature_RNA > 1000 & nFeature_RNA < 4500)
 zone2 =  NormalizeData(zone2, normalization.method = "LogNormalize", scale.factor = 10000)
 VlnPlot(zone2, features = c("Myh6", "Actc1"))
+zone2ExpressionData = GetAssayData(object = zone2)
+zone2ExpressionDf = as.data.frame(zone2ExpressionData)
+zone2ExpressionDf = t(zone2ExpressionDf)
+rownames(zone2ExpressionDf) = colnames(zone2)
+write.csv(zone2ExpressionDf, file = '/Users/madelinehakala/mouse-heart-scRNA-seq-analysis/zone2_expression_data')
 
 
 ## Zone 3 Analysis
@@ -31,3 +36,9 @@ plot1 + plot2
 zone3 = subset(zone3, subset = nFeature_RNA > 1000 & nFeature_RNA < 4500)
 zone3 =  NormalizeData(zone3, normalization.method = "LogNormalize", scale.factor = 10000)
 VlnPlot(zone3, features = c("Myh6", "Actc1"))
+zone3ExpressionData = GetAssayData(object = zone3)
+zone3ExpressionDf = as.data.frame(zone3ExpressionData)
+zone3ExpressionDf = t(zone3ExpressionDf)
+rownames(zone3ExpressionDf) = colnames(zone3)
+write.csv(zone3ExpressionDf, file = '/Users/madelinehakala/mouse-heart-scRNA-seq-analysis/zone3_expression_data')
+
