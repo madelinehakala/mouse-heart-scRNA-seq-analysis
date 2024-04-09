@@ -6,8 +6,8 @@ import shutil
 def check_arg(args = None):
 	'''Parses command line arguments.'''
 	parser = argparse.ArgumentParser(description = 'Pipeline for scRNA-Seq analysis.')
-	parser.add_argument('-o', '--outputDirectory',
-		help = 'Directory where all outputed files and folders will be stored',
+	parser.add_argument('-d', '--directory',
+		help = 'Directory where data and scripts are stored',
 		required = 'True'
 		)	
 	parser.add_argument('-l', '--logFileName',
@@ -16,11 +16,7 @@ def check_arg(args = None):
 		)
 	return parser.parse_args(args)
 
-def initializeOutputDirectory(directory):
-  '''Initializes a directory where all outputted files, folders, etc will be stored.'''
-  if os.path.exists(directory): # if the directory with that name already exists, remove it
-    shutil.rmtree(directory)
-  os.makedirs(directory) # then make the directory and move into it
+def enterDirectory(directory):
   os.chdir(directory)
   
 def createLog(logFileName):
@@ -31,16 +27,19 @@ def createLog(logFileName):
 def callSeurat(seuratScript):
   '''Function to call the Seurat script, which is an Rscript.'''
   callingScript = f'Rscript {seuratScript}'
+  logFile.write('Running Seurat... ')
   os.system(callingScript)
-  logFile.write('Running Seurat... COMPLETE')
+  logFile.write('COMPLETE')
   logFile.write('\n-------------------------------------------\n')
   
   
 # retrieving command line arguments and assigning to variables
 args = check_arg(sys.argv[1:])
-outputDir = args.outputDirectory
+directory = args.directory
 logFileName = args.logFileName
 
 #initializeOutputDirectory(outputDir)
+enterDirectory(directory)
 logFile = createLog(logFileName)
 seurat = callSeurat('seurat.R')
+
