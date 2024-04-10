@@ -4,6 +4,7 @@ import os
 import shutil
 import csv
 import pandas as pd
+import seaborn as sns
 
 def check_arg(args = None):
 	'''Parses command line arguments.'''
@@ -51,20 +52,48 @@ def selectMuscleCells(seuratOutfile, filteredOutfileName, filterValueA, filterVa
   expressionDataMuscleContractionGenes = expressionDataMuscleContractionGenes.loc[expressionDataMuscleContractionGenes['Myh6'] >= filterValueA]
   expressionDataMuscleContractionGenes = expressionDataMuscleContractionGenes.loc[expressionDataMuscleContractionGenes['Actc1'] >= filterValueB]
   expressionDataMuscleContractionGenes.to_csv(filteredOutfileName, index = False)
-  logFile.write(f'{seuratOutfile} after filtering...\n\n')
+  logFile.write(f'{filteredOutfileName} after filtering...\n\n')
   logFile.write(f'{expressionDataMuscleContractionGenes.head()}\n')
   logFile.write('-------------------------------------------\n')
   
+def visualizeExpressionData(filteredOutfile, plotFileName):
+  '''Visualizes expression data.'''
+  filteredExpressionData = pd.read_csv(filteredOutfile)
+  sns.set_theme(rc = {'figure.figsize': (20, 6)})
+  boxplot = sns.boxplot(filteredExpressionData)
+  boxplot.set_xticklabels(boxplot.get_xticklabels(), rotation = 45)
+  boxplot.set(ylabel = 'Expression Level')
+  figure = boxplot.get_figure()
+  figure.savefig(plotFileName)
+  
+def normalizeExpressionData(filteredOutfile, outfileName):
+  '''Calculates the average expression level of each muscle marker gene and outputs to a new file.'''
+  filteredExpressionData = pd.read_csv(filteredOutfile)
+  for column in filteredExpressionData.columns:
+    try:
+      values = filteredExpressionData[column]
+      mean = filteredExpressionData[column].mean()
+      filteredExpressionData[column] = values / mean
+    except TypeError:
+      continue
+  filteredExpressionData.to_csv(outfileName, index = False)
+  logFile.write(f'{outfileName} after normalizing expression levels...\n\n')
+  logFile.write(f'{filteredExpressionData.head()}\n')
+  logFile.write('-------------------------------------------\n')
   
 # retrieving command line arguments and assigning to variables
 args = check_arg(sys.argv[1:])
 directory = args.directory
 logFileName = args.logFileName
 
-#initializeOutputDirectory(outputDir)
 enterDirectory(directory)
 logFile = createLog(logFileName)
 seurat = callSeurat('seurat.R')
-zone2MuscleCells = selectMuscleCells('zone2_expression_data.csv', 'zone2_muscle_cell_filtered_expression_data.csv', 0.75, 3) # 0.75 is minimum expression level for Myh6
-zone3MuscleCells = selectMuscleCells('zone3_expression_data.csv', 'zone3_muscle_cell_filtered_expression_data.csv', 0.75, 3) # 3 is minimum expression level for Actc1
-
+zone2MuscleCells = selectMuscleCells('zone2_expression_data.csv', 'zone2_muscle_cell_expression_data.csv', 0.75, 3) # 0.75 is minimum expression level for Myh6
+zone3MuscleCells = selectMuscleCells('zone3_expression_data.csv', 'zone3_muscle_cell_expression_data.csv', 0.75, 3) # 3 is minimum expression level for Actc1
+zone2Visualization = visualizeExpressionData('zone2_muscle_cell_expression_data.csv', 'zone2_muscle_cell_expression_visualization.png')
+zone3Visualization = visualizeExpressionData('zone3_muscle_cell_expression_data.csv', 'zone3_muscle_cell_expression_visualization.png')
+zone2MuscleCellsNormalized = normalizeExpressionData('zone2_muscle_cell_expression_data.csv', 'zone2_muscle_cell_normalized_expression_data.csv')
+zone3MuscleCellsNormalized = normalizeExpressionData('zone3_muscle_cell_expression_data.csv', 'zone3_muscle_cell_normalized_expression_data.csv')
+zone2NormalizedVisualization = visualizeExpressionData('zone2_muscle_cell_normalized_expression_data.csv', 'zone2_muscle_cell_normalized_expression_visualization.png')
+zone3NormalizedVisualization = visualizeExpressionData('zone3_muscle_cell_normalized_expression_data.csv', 'zone3_muscle_cell_normalized_expression_visualization.png')
