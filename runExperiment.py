@@ -73,7 +73,10 @@ def normalizeExpressionData(filteredOutfile, outfileName):
     try:
       values = filteredExpressionData[column]
       mean = filteredExpressionData[column].mean()
-      filteredExpressionData[column] = values / mean
+      if mean != 0:
+        filteredExpressionData[column] = values / mean
+      else:
+        filteredExpressionData[column] = values
     except TypeError:
       continue
   filteredExpressionData.to_csv(outfileName, index = False)
