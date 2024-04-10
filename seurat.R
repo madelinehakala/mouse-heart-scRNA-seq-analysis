@@ -21,12 +21,7 @@ zone2ExpressionData = GetAssayData(object = zone2)
 zone2ExpressionDf = as.data.frame(zone2ExpressionData)
 zone2ExpressionDf = t(zone2ExpressionDf)
 rownames(zone2ExpressionDf) = colnames(zone2)
-write.csv(zone2ExpressionDf, file = 'zone2_expression_data')
-genesZone2 = c("Myh6", "Myh7", "Myh1", "Myh3", "Myh7b", "Myh8", "Myh13", "Myh14", "Myl1", "Myl3", "Myl4", 
-               "Myl2", "Myl7", "Mybpc3", "Mybphl", "Mybpc1", "Mybpc2", "Mybph", "Actn2", "Actn3", "Acta1", "Actc1", "Tpm1",
-               "Tpm2", "Tpm3", "Tnni1", "Tnni2", "Tnni3", "Tnnt1", "Tnnt2", "Tnnt3", "Tnnc1", "Tnnc2")
-zone2ExpressionDfGenesOfInterest = subset(zone2ExpressionDf, select = genesZone2)
-write.csv(zone2ExpressionDfGenesOfInterest, file = 'zone2_expression_data_genes_of_interest')
+write.csv(zone2ExpressionDf, file = 'zone2_expression_data.csv')
 
 ## Zone 3 Analysis
 zone3 = CreateSeuratObject(counts = zone3.data, project = "Zone III", min.cells = 3, min.features = 200)
@@ -43,10 +38,6 @@ zone3ExpressionData = GetAssayData(object = zone3)
 zone3ExpressionDf = as.data.frame(zone3ExpressionData)
 zone3ExpressionDf = t(zone3ExpressionDf)
 rownames(zone3ExpressionDf) = colnames(zone3)
-write.csv(zone3ExpressionDf, file = 'zone3_expression_data')
-genesZone3 = c("Myh6", "Myh7", "Myh7b", "Myh8", "Myh13", "Myh14", "Myl1", "Myl3", "Myl4", 
-               "Myl2", "Myl7", "Mybpc3", "Mybphl", "Mybpc2", "Actn2", "Actn3", "Acta1", "Actc1", "Tpm1",
-               "Tpm2", "Tpm3", "Tnni1", "Tnni2", "Tnni3", "Tnnt1", "Tnnt2", "Tnnt3", "Tnnc1", "Tnnc2")
-zone3ExpressionDfGenesOfInterest = subset(zone3ExpressionDf, select = genesZone3)
-write.csv(zone3ExpressionDfGenesOfInterest, file = 'zone3_expression_data_genes_of_interest')
+write.csv(zone3ExpressionDf, file = 'zone3_expression_data.csv')
+
 
