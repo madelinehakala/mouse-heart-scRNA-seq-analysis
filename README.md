@@ -29,7 +29,6 @@ dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 dataZone3 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 
 ## Required Dependencies
-- Seurat
-- Numpy
-- Pandas
-- Scipy
+- Seurat(R)
+- patchwork (R)
+- Pandas (Python)
