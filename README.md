@@ -29,6 +29,11 @@ dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 
 dataZone3 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 
+To download the data yourself in the required format, run the following command:
+```
+sh getData.sh
+```
+
 ## Required Dependencies
 - Seurat (R)
 - patchwork (R)
