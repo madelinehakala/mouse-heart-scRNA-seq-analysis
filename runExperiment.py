@@ -36,6 +36,7 @@ def callSeurat(seuratScript):
   logFile.write('-------------------------------------------\n')
 
 def selectMuscleCells(seuratOutfile, filteredOutfileName, filterValueA, filterValueB):
+  '''Filters the outputed file from Seurat to include only muscle cells. Additionally, it selects only the columns with muscle contraction genes of interest. Outputs this data into a new csv.'''
   expressionData = pd.read_csv(seuratOutfile)
   logFile.write(f'{seuratOutfile} prior to filtering...\n\n')
   logFile.write(f'{expressionData.head()}\n\n')
@@ -64,6 +65,6 @@ logFileName = args.logFileName
 enterDirectory(directory)
 logFile = createLog(logFileName)
 seurat = callSeurat('seurat.R')
-zone2MuscleCells = selectMuscleCells('zone2_expression_data.csv', 'zone2_expression_data_genes_of_interest.csv', 0.75, 3)
-zone3MuscleCells = selectMuscleCells('zone3_expression_data.csv', 'zone3_expression_data_genes_of_interest.csv', 0.75, 3)
+zone2MuscleCells = selectMuscleCells('zone2_expression_data.csv', 'zone2_muscle_cell_filtered_expression_data.csv', 0.75, 3) # 0.75 is minimum expression level for Myh6
+zone3MuscleCells = selectMuscleCells('zone3_expression_data.csv', 'zone3_muscle_cell_filtered_expression_data.csv', 0.75, 3) # 3 is minimum expression level for Actc1
 
