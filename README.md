@@ -14,8 +14,13 @@ This project utilizes scRNA-Seq data from the mouse heart, which was collected b
 ## Running Our Code
 To run our code, utilize the following command:
 ```
-python3 runExperiment.py -d [DATA DIRECTORY] -l [LOG FILE NAME]
+python3 runExperiment.py -d [DIRECTORY] -l [LOG FILE NAME]
 ```
+Ex: When I ran this script, I used the following command (all data and scripts were stored in the indicated directory):
+```
+python3 runExperiment.py -d /Users/madelinehakala/mouse-heart-scRNA-seq-analysis -l logFile.txt
+```
+
 ## Data Format
 For Seurat (and the rest of our code) to work, data must be in a very specific format:
 
