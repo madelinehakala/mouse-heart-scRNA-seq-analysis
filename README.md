@@ -22,7 +22,7 @@ Ex: When I ran this script, I used the following command (all data and scripts w
 python3 runExperiment.py -d /Users/madelinehakala/mouse-heart-scRNA-seq-analysis -l logFile.txt
 ```
 
-## Data Format
+## Data Download
 For Seurat (and the rest of our code) to work, data must be in a very specific format:
 
 dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
