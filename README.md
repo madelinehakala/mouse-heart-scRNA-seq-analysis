@@ -38,3 +38,4 @@ sh getData.sh
 - Seurat (R)
 - patchwork (R)
 - Pandas (Python)
+- Seaborn (Python)
