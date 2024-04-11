@@ -13,7 +13,7 @@ This project utilizes scRNA-Seq data from the mouse heart, which was collected b
 7. Data visualization and additional analysis.
 
 ## Running Our Code
-To run our code, utilize the following command:
+To run our code, clone this repo, download data and required dependencies, and then utilize the following command:
 ```
 python3 runExperiment.py -d [DIRECTORY] -l [LOG FILE NAME]
 ```
