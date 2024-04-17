@@ -23,7 +23,7 @@ python3 runExperiment.py -d /Users/madelinehakala/mouse-heart-scRNA-seq-analysis
 ```
 
 ## Data Download
-For Seurat (and the rest of our code) to work, data must be in a very specific format:
+For Seurat (and the rest of our code) to work, data must be in a very specific format and placed in the corresponding directories like so:
 
 dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 
