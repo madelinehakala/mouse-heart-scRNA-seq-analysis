@@ -12,16 +12,6 @@ This project utilizes scRNA-Seq data from the mouse heart, which was collected b
 6. Output these findings to a well-organized csv file for additional analysis.
 7. Data visualization and additional analysis.
 
-## Running Our Code
-To run our code, clone this repo, download data and required dependencies, and then utilize the following command:
-```
-python3 runExperiment.py -d [DIRECTORY] -l [LOG FILE NAME]
-```
-Ex: When I ran this script, I used the following command (all data and scripts were stored in the indicated directory):
-```
-python3 runExperiment.py -d /Users/madelinehakala/mouse-heart-scRNA-seq-analysis -l logFile.txt
-```
-
 ## Data Download
 For Seurat (and the rest of our code) to work, data must be in a very specific format and placed in the corresponding directories like so:
 
@@ -32,6 +22,16 @@ dataZone3 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 To download the data yourself in the required format, run the following command:
 ```
 sh getData.sh
+```
+
+## Running Our Code
+To run our code, clone this repo, download data and required dependencies, and then utilize the following command:
+```
+python3 runExperiment.py -d [DIRECTORY] -l [LOG FILE NAME]
+```
+Ex: When I ran this script, I used the following command (all data and scripts were stored in the indicated directory):
+```
+python3 runExperiment.py -d /Users/madelinehakala/mouse-heart-scRNA-seq-analysis -l logFile.txt
 ```
 
 ## Required Dependencies
