@@ -27,7 +27,7 @@ If you are using your own data, just make sure it follows the appropriate format
 ## Running Our Code
 To run our code, clone this repo, download data and required dependencies, and then utilize the following command:
 ```
-python3 runExperimentChangesInProgress.py -d [DATADIRECTORY] -g [GENESOFINTERESTFILE] -s [SAMPLELABEL] -l [LOGFILENAME] -g1 [MARKERGENE1] -g2 [MARKERGENE2] -f [FILTEREDOUTFILENAME] -p [PLOTFILENAME] -n [NORMALIZEDOUTFILENAME]
+python3 runExperiment.py -d [DATADIRECTORY] -g [GENESOFINTERESTFILE] -s [SAMPLELABEL] -l [LOGFILENAME] -g1 [MARKERGENE1] -g2 [MARKERGENE2] -f [FILTEREDOUTFILENAME] -p [PLOTFILENAME] -n [NORMALIZEDOUTFILENAME]
 ```
 - [DATADIRECTORY]: directory where your data is stored
 - [GENESOFINTERESTFILE]: text file that contains your genes of interest that you would like to include in the final output
@@ -41,7 +41,7 @@ python3 runExperimentChangesInProgress.py -d [DATADIRECTORY] -g [GENESOFINTEREST
 
 Ex: When I ran this script using data from Zone II of the mouse heart, I used the following command (all data and scripts were stored in the indicated directory):
 ```
-python3 runExperimentChangesInProgress.py -d dataZone2 -s Zone2 -l Zone2LogFile.txt -g1 Myh6 -g2 Actc1 -f zone2_muscle_cells.csv -p zone2_muscle_cell_expression_data.png -n normalized_zone2_muscle_cells.csv
+python3 runExperiment.py -d dataZone2 -s Zone2 -l Zone2LogFile.txt -g1 Myh6 -g2 Actc1 -f zone2_muscle_cells.csv -p zone2_muscle_cell_expression_data.png -n normalized_zone2_muscle_cells.csv
 ```
 
 ## Required Dependencies
