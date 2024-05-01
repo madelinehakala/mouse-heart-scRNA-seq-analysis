@@ -48,8 +48,6 @@ def check_arg(args = None):
 		)	
 	return parser.parse_args(args)
 
-def enterDirectory(directory):
-  os.chdir(directory)
   
 def createLog(logFileName):
   '''Creates an empty log file where run info will be stored.'''
@@ -67,26 +65,26 @@ def callSeurat(seuratScript):
   return seuratOutfile
 
 def selectCells(seuratOutfile, filteredOutfileName, genesOfInterest, markerGene1, markerGene2):
-  '''Filters the outputed file from Seurat to include only muscle cells. Additionally, it selects only the columns with muscle contraction genes of interest. Outputs this data into a new csv.'''
+  '''Filters the outputed file from Seurat to include only the cell type of interest. Additionally, it selects only the columns with genes of interest. Outputs this data into a new csv.'''
   if markerGene2 == None:
-    print('View the Rplots.pdf file for expression visualizations of your marker gene of interest to assess minimum necessary expression cutoffs.')
-    filterValueA = float(input(f'Minimum Expression Level of {markerGene1}: '))
+    print('View the Rplots.pdf file for expression visualizations of your marker genes of interest to assess necessary minimum expression cutoffs.')
+    filterValueA = float(input(f'Set Minimum Expression Level of {markerGene1}: '))
     expressionData = pd.read_csv(seuratOutfile)
     logFile.write(f'{seuratOutfile} prior to filtering...\n\n')
     logFile.write(f'{expressionData.head()}\n\n')
     logFile.write('-------------------------------------------\n')
-    muscleContractionFile = open(genesOfInterest, 'r')
-    muscleContractionData = muscleContractionFile.read()
-    muscleContractionGeneList = muscleContractionData.split(',')
-    expressedMuscleContractionGeneList = []
-    for gene in muscleContractionGeneList:
+    genesOfInterestFile = open(genesOfInterest, 'r')
+    genesOfInterestData = genesOfInterestFile.read()
+    genesOfInterestList = genesOfInterestData.split(',')
+    expressedGenesOfInterestList = []
+    for gene in genesOfInterestList:
       if gene in expressionData.columns:
-        expressedMuscleContractionGeneList.append(gene)
-    expressionDataMuscleContractionGenes = expressionData[expressedMuscleContractionGeneList]
-    expressionDataMuscleContractionGenes = expressionDataMuscleContractionGenes.loc[expressionDataMuscleContractionGenes[markerGene1] >= filterValueA]
-    expressionDataMuscleContractionGenes.to_csv(filteredOutfileName, index = False)
+        expressedGenesOfInterestList.append(gene)
+    expressionDataGenesOfInterest = expressionData[expressedGenesOfInterestList]
+    expressionDataGenesOfInterest = expressionDataGenesOfInterest.loc[expressionDataGenesOfInterest[markerGene1] >= filterValueA]
+    expressionDataGenesOfInterest.to_csv(filteredOutfileName, index = False)
     logFile.write(f'{filteredOutfileName} after filtering...\n\n')
-    logFile.write(f'{expressionDataMuscleContractionGenes.head()}\n')
+    logFile.write(f'{expressionDataGenesOfInterest.head()}\n')
     logFile.write('-------------------------------------------\n')
   else:
     print('View the Rplots.pdf file for expression visualizations of your marker genes of interest to assess necessary minimum expression cutoffs.')
@@ -95,19 +93,19 @@ def selectCells(seuratOutfile, filteredOutfileName, genesOfInterest, markerGene1
     expressionData = pd.read_csv(seuratOutfile)
     logFile.write(f'{seuratOutfile} prior to filtering...\n\n')
     logFile.write(f'{expressionData.head()}\n\n')
-    muscleContractionFile = open('muscle_contraction_genes.txt', 'r')
-    muscleContractionData = muscleContractionFile.read()
-    muscleContractionGeneList = muscleContractionData.split(',')
-    expressedMuscleContractionGeneList = []
-    for gene in muscleContractionGeneList:
+    genesOfInterestFile = open(genesOfInterest, 'r')
+    genesOfInterestData = genesOfInterestFile.read()
+    genesOfInterestList = genesOfInterestData.split(',')
+    expressedGenesOfInterestList = []
+    for gene in genesOfInterestList:
       if gene in expressionData.columns:
-        expressedMuscleContractionGeneList.append(gene)
-    expressionDataMuscleContractionGenes = expressionData[expressedMuscleContractionGeneList]
-    expressionDataMuscleContractionGenes = expressionDataMuscleContractionGenes.loc[expressionDataMuscleContractionGenes[markerGene1] >= filterValueA]
-    expressionDataMuscleContractionGenes = expressionDataMuscleContractionGenes.loc[expressionDataMuscleContractionGenes[markerGene1] >= filterValueB]
-    expressionDataMuscleContractionGenes.to_csv(filteredOutfileName, index = False)
+        expressedGenesOfInterestList.append(gene)
+    expressionDataGenesOfInterest = expressionData[expressedGenesOfInterestList]
+    expressionDataGenesOfInterest = expressionDataGenesOfInterest.loc[expressionDataGenesOfInterest[markerGene1] >= filterValueA]
+    expressionDataGenesOfInterest = expressionDataGenesOfInterest.loc[expressionDataGenesOfInterest[markerGene1] >= filterValueB]
+    expressionDataGenesOfInterest.to_csv(filteredOutfileName, index = False)
     logFile.write(f'{filteredOutfileName} after filtering...\n\n')
-    logFile.write(f'{expressionDataMuscleContractionGenes.head()}\n')
+    logFile.write(f'{expressionDataGenesOfInterest.head()}\n')
     logFile.write('-------------------------------------------\n')
   
 def visualizeExpressionData(filteredOutfile, plotFileName):
@@ -121,7 +119,7 @@ def visualizeExpressionData(filteredOutfile, plotFileName):
   figure.savefig(plotFileName)
   
 def normalizeExpressionData(filteredOutfile, normalizedOutfileName):
-  '''Calculates the average expression level of each muscle marker gene and outputs to a new file.'''
+  '''Normalizes the expression data by dividing each individual value by the population average for that gene.'''
   filteredExpressionData = pd.read_csv(filteredOutfile)
   for column in filteredExpressionData.columns:
     try:
@@ -141,7 +139,7 @@ def normalizeExpressionData(filteredOutfile, normalizedOutfileName):
 # retrieving command line arguments and assigning to variables
 args = check_arg(sys.argv[1:])
 directory = args.directory
-genesOfInterest = genesOfInterestFile
+genesOfInterest = args.genesOfInterestFile
 sampleLabel = args.sampleLabel
 logFileName = args.logFileName
 markerGene1 = args.markerGene1
