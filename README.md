@@ -1,12 +1,12 @@
 # Building a Pipeline for scRNA-Seq Analysis
 
 ## Overview
-The overall goal for this project was to build a pipeline that assesses the level of gene expression homogeneity exhibited by the muscle tissue of the mouse heart (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE132658). In striving to complete this goal, however, we built a readily generalizable pipeline. As long as data is in the correct format, this pipeline can be used to analyze a wide variety of scRNA-Seq datasets. 
+The overall goal for this project was to build a pipeline that assesses the level of gene expression heterogeneity exhibited by the muscle tissue of the mouse heart (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE132658). In striving to complete this goal, however, we built a readily generalizable pipeline. As long as data is in the correct format, this pipeline can be used to analyze a wide variety of scRNA-Seq datasets. 
 **For detailed project design information, see the Design Document in the Wiki tab.**
 
 ## The Pipeline
 1. Retrieve data.
-2. Assess expression levels of known marker genes for your cell type of interest (for us, these were Myh6 and Actc1).
+2. Assess expression levels of known marker genes for your cell type of interest (for us, these were Myh6 and Actc1, which are marker genes for muscle cells).
 3. Select for your cell type of interest, filtering out other cell types, by utilizing the expression levels of the marker genes.
 4. Calculate the average expression levels of genes that you know to be implicated in your cell/tissue type of interest.
 5. Calculate the relative expression levels of the above genes in individual cells when compared to the population average.
@@ -20,7 +20,7 @@ The overall goal for this project was to build a pipeline that assesses the leve
 - Seaborn (Python)
 
 ## Running Our Code
-To run our code, clone this repo, download data and required dependencies, and then utilize the following command:
+To run our code, utilize the following command:
 ```
 python3 runExperiment.py -d [DATADIRECTORY] -g [GENESOFINTERESTFILE] -s [SAMPLELABEL] -l [LOGFILENAME] -g1 [MARKERGENE1] -g2 [MARKERGENE2] -f [FILTEREDOUTFILENAME] -p [PLOTFILENAME] -n [NORMALIZEDOUTFILENAME]
 ```
@@ -34,7 +34,7 @@ python3 runExperiment.py -d [DATADIRECTORY] -g [GENESOFINTERESTFILE] -s [SAMPLEL
 - [PLOTFILENAME]: the name you would like to give the outputted plots
 - [NORMALIZEDOUTFILENAME]: the name you would like to give the file that contains normalized gene expression data for your cell type of interest
 
-Ex: When I ran this script using data from Zone II of the mouse heart, I used the following command (all data and scripts were stored in the indicated directory):
+Ex: When we ran this script using data from Zone II of the mouse heart, we used the following command (all data and scripts were stored in the indicated directory):
 ```
 python3 runExperiment.py -d dataZone2 -g muscle_contraction_genes.txt -s Zone2 -l Zone2LogFile.txt -g1 Myh6 -g2 Actc1 -f zone2_muscle_cells.csv -p zone2_muscle_cell_expression_data.png -n normalized_zone2_muscle_cells.csv
 ```
@@ -66,4 +66,4 @@ Step 3:
 ```
 python3 runExperiment.py -d tutorial_data -g tutorial_genes_of_interest.txt -s tutorial -l tutorialLogFile.txt -g1 Myh6 -g2 Actc1 -f tutorial_muscle_cells.csv -p tutorial_muscle_cell_expression_data.png -n tutorial_normalized_muscle_cells.csv
 ```
-When prompted to enter expression cutoffs for Myh6 and Actc1, enter 0.75 and 3, respectively.
+**When prompted to enter expression cutoffs for Myh6 and Actc1, enter 0.75 and 3, respectively.**
