@@ -58,7 +58,7 @@ def createLog(logFileName):
 def callSeurat(seuratScript):
   '''Function to call the Seurat script, which is an Rscript.'''
   logFile.write('Running Seurat... ')
-  subprocess.call(['Rscript', seuratScript, directory, sampleLabel, markerGene1, markerGene2])
+  subprocess.call(['Rscript', seuratScript, directory, sampleLabel, markerGene1, markerGene2]) # calling the Seurat script with needed variables
   logFile.write('COMPLETE\n')
   logFile.write('-------------------------------------------\n')
   seuratOutfile = f'{sampleLabel}_expression_data.csv'
@@ -68,25 +68,26 @@ def selectCells(seuratOutfile, filteredOutfileName, genesOfInterest, markerGene1
   '''Filters the outputed file from Seurat to include only the cell type of interest. Additionally, it selects only the columns with genes of interest. Outputs this data into a new csv.'''
   if markerGene2 == None:
     print('View the Rplots.pdf file for expression visualizations of your marker genes of interest to assess necessary minimum expression cutoffs.')
-    filterValueA = float(input(f'Set Minimum Expression Level of {markerGene1}: '))
+    filterValueA = float(input(f'Set Minimum Expression Level of {markerGene1}: ')) # taking user input for minimum expression level of marker gene 1
     expressionData = pd.read_csv(seuratOutfile)
     logFile.write(f'{seuratOutfile} prior to filtering...\n\n')
     logFile.write(f'{expressionData.head()}\n\n')
     logFile.write('-------------------------------------------\n')
-    genesOfInterestFile = open(genesOfInterest, 'r')
+    genesOfInterestFile = open(genesOfInterest, 'r') # reading file with info on genes of interest
     genesOfInterestData = genesOfInterestFile.read()
     genesOfInterestList = genesOfInterestData.split(',')
     expressedGenesOfInterestList = []
     for gene in genesOfInterestList:
       if gene in expressionData.columns:
         expressedGenesOfInterestList.append(gene)
-    expressionDataGenesOfInterest = expressionData[expressedGenesOfInterestList]
-    expressionDataGenesOfInterest = expressionDataGenesOfInterest.loc[expressionDataGenesOfInterest[markerGene1] >= filterValueA]
+    expressionDataGenesOfInterest = expressionData[expressedGenesOfInterestList] # filtering data to include only genes of interest
+    # filtering data to include cells that meet minimum expression cutoffs of marker gene 1
+    expressionDataGenesOfInterest = expressionDataGenesOfInterest.loc[expressionDataGenesOfInterest[markerGene1] >= filterValueA] 
     expressionDataGenesOfInterest.to_csv(filteredOutfileName, index = False)
     logFile.write(f'{filteredOutfileName} after filtering...\n\n')
     logFile.write(f'{expressionDataGenesOfInterest.head()}\n')
     logFile.write('-------------------------------------------\n')
-  else:
+  else: # same comments as above, just allows for both marker genes to be utilized
     print('View the Rplots.pdf file for expression visualizations of your marker genes of interest to assess necessary minimum expression cutoffs.')
     filterValueA = float(input(f'Set Minimum Expression Level of {markerGene1}: '))
     filterValueB = float(input(f'Set Minimum Expression Level of {markerGene2}: '))
@@ -122,7 +123,7 @@ def normalizeExpressionData(filteredOutfile, normalizedOutfileName):
   '''Normalizes the expression data by dividing each individual value by the population average for that gene.'''
   filteredExpressionData = pd.read_csv(filteredOutfile)
   for column in filteredExpressionData.columns:
-    try:
+    try: # if the average expression level for a gene is not zero, divide each value by the pop average
       values = filteredExpressionData[column]
       mean = filteredExpressionData[column].mean()
       if mean != 0:
@@ -158,3 +159,4 @@ cellsOfInterest = selectCells(seurat, filteredOutfileName, genesOfInterest, mark
 preNormalizationVisualization = visualizeExpressionData(filteredOutfileName, plotFileName)
 cellsOfInterestNormalized = normalizeExpressionData(filteredOutfileName, normalizedOutfileName)
 postNormalizationVisualization = visualizeExpressionData(normalizedOutfileName, f'normalized_{plotFileName}')
+
