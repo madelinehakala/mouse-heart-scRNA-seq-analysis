@@ -39,8 +39,9 @@ Ex: When we ran this script using data from Zone II of the mouse heart, we used 
 python3 runExperiment.py -d dataZone2 -g muscle_contraction_genes.txt -s Zone2 -l Zone2LogFile.txt -g1 Myh6 -g2 Actc1 -f zone2_muscle_cells.csv -p zone2_muscle_cell_expression_data.png -n normalized_zone2_muscle_cells.csv
 ```
 ## Data Formatting
-For Seurat (and the rest of our code) to work, data must be in a very specific format and placed in the corresponding directories. Example:
+For Seurat (and the rest of our code) to work, data must be in a very specific format and placed in the corresponding directories. 
 
+Ex: One of data directories:
 dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 
 To download the data that we analyzed for this project in the required format, run the following command:
