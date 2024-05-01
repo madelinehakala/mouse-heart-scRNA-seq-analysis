@@ -1,4 +1,5 @@
-# Assessing Gene Expression Homogeneity in Mouse Heart Muscle Cells: scRNA-Seq Analysis
+# Building a Pipeline for scRNA-Seq Analysis
+## Goals is to assess gene expression heterogeneity in the mouse heart muscle cells by utilizing this pipeline
 
 ## Overview
 This project utilizes scRNA-Seq data from the mouse heart, which was collected by the Barefield Lab (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE132658). Our overall goal is to build a pipeline that assesses the level of gene expression homogeneity exhibited by the muscle tissue of the heart. **For detailed project design information, see the Design Document in the Wiki tab.**
