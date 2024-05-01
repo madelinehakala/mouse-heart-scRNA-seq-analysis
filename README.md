@@ -29,15 +29,15 @@ To run our code, clone this repo, download data and required dependencies, and t
 ```
 python3 runExperimentChangesInProgress.py -d [DATADIRECTORY] -g [GENESOFINTERESTFILE] -s [SAMPLELABEL] -l [LOGFILENAME] -g1 [MARKERGENE1] -g2 [MARKERGENE2] -f [FILTEREDOUTFILENAME] -p [PLOTFILENAME] -n [NORMALIZEDOUTFILENAME]
 ```
-[DATADIRECTORY]: directory where your data is stored
-[GENESOFINTERESTFILE]: text file that contains your genes of interest that you would like to include in the final output
-[SAMPLELABEL]: label that describes your data (ex: Zone2MouseHeart)
-[LOGFILENAME]: the name you would like to give your logfile
-[MARKERGENE1]: a gene that is known to be a "marker" for your cell type of interest
-[MARKERGENE2]: a second gene that is known to be a "marker" for your cell type of interest (this argument is optional)
-[FILTEREDOUTFILENAME]: the name you would like to give the file that contains absolute gene expression data for your cell type of interest
-[PLOTFILENAME]: the name you would like to give the outputted plots
-[NORMALIZEDOUTFILENAME]: the name you would like to give the file that contains normalized gene expression data for your cell type of interest
+- [DATADIRECTORY]: directory where your data is stored
+- [GENESOFINTERESTFILE]: text file that contains your genes of interest that you would like to include in the final output
+- [SAMPLELABEL]: label that describes your data (ex: Zone2MouseHeart)
+- [LOGFILENAME]: the name you would like to give your logfile
+- [MARKERGENE1]: a gene that is known to be a "marker" for your cell type of interest
+- [MARKERGENE2]: a second gene that is known to be a "marker" for your cell type of interest (this argument is optional)
+- [FILTEREDOUTFILENAME]: the name you would like to give the file that contains absolute gene expression data for your cell type of interest
+- [PLOTFILENAME]: the name you would like to give the outputted plots
+- [NORMALIZEDOUTFILENAME]: the name you would like to give the file that contains normalized gene expression data for your cell type of interest
 
 Ex: When I ran this script using data from Zone II of the mouse heart, I used the following command (all data and scripts were stored in the indicated directory):
 ```
