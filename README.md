@@ -13,16 +13,11 @@ The overall goal for this project was to build a pipeline that assesses the leve
 6. Output these findings to a well-organized csv file for additional analysis.
 7. Data visualization and additional analysis.
 
-## Data Download
-For Seurat (and the rest of our code) to work, data must be in a very specific format and placed in the corresponding directories. Example:
-
-dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
-
-To download the data that we analyzed for this project in the required format, run the following command:
-```
-sh getData.sh
-```
-If you are using your own data, just make sure it follows the appropriate format.
+## Required Dependencies
+- Seurat (R)
+- patchwork (R)
+- Pandas (Python)
+- Seaborn (Python)
 
 ## Running Our Code
 To run our code, clone this repo, download data and required dependencies, and then utilize the following command:
@@ -43,9 +38,32 @@ Ex: When I ran this script using data from Zone II of the mouse heart, I used th
 ```
 python3 runExperiment.py -d dataZone2 -g muscle_contraction_genes.txt -s Zone2 -l Zone2LogFile.txt -g1 Myh6 -g2 Actc1 -f zone2_muscle_cells.csv -p zone2_muscle_cell_expression_data.png -n normalized_zone2_muscle_cells.csv
 ```
+## Data Formatting
+For Seurat (and the rest of our code) to work, data must be in a very specific format and placed in the corresponding directories. Example:
 
-## Required Dependencies
-- Seurat (R)
-- patchwork (R)
-- Pandas (Python)
-- Seaborn (Python)
+dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
+
+To download the data that we analyzed for this project in the required format, run the following command:
+```
+sh getData.sh
+```
+If you are using your own data, just make sure it follows the appropriate format.
+
+## Tutorial
+Follow the tutorial below (using the tutorial data found in this repository) to practice working with this pipeline.
+
+Step 1:
+```
+git clone https://github.com/madelinehakala/mouse-heart-scRNA-seq-analysis
+```
+
+Step 2:
+```
+cd mouse-heart-scRNA-seq-analysis
+```
+
+Step 3:
+```
+python3 runExperiment.py -d tutorial_data -g tutorial_genes_of_interest.txt -s tutorial -l tutorialLogFile.txt -g1 Myh6 -g2 Actc1 -f tutorial_muscle_cells.csv -p tutorial_muscle_cell_expression_data.png -n tutorial_normalized_muscle_cells.csv
+```
+When prompted to enter expression cutoffs for Myh6 and Actc1, enter 0.75 and 3, respectively.
