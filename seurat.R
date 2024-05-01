@@ -12,7 +12,6 @@ markerGene2 = args[4]
 ## Path to data
 data = Read10X(data.dir = directory)
 
-
 ## Analysis
 sample = CreateSeuratObject(counts = data, project = sampleLabel, min.cells = 3, min.features = 200)
 sample
@@ -23,7 +22,7 @@ plot2 = FeatureScatter(sample, feature1 = "nCount_RNA", feature2 = "nFeature_RNA
 plot1 + plot2
 sample = subset(sample, subset = nFeature_RNA > 1000 & nFeature_RNA < 4500)
 sample =  NormalizeData(sample, normalization.method = "LogNormalize", scale.factor = 10000)
-if (!is.null(markerGene2)) {
+if (is.null(markerGene2)) {
   VlnPlot(sample, features = markerGene1)
 } else {
   VlnPlot(sample, features = c(markerGene1, markerGene2))
