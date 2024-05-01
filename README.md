@@ -27,11 +27,21 @@ If you are using your own data, just make sure it follows the appropriate format
 ## Running Our Code
 To run our code, clone this repo, download data and required dependencies, and then utilize the following command:
 ```
-python3 runExperiment.py -d [DIRECTORY] -l [LOG FILE NAME]
+python3 runExperimentChangesInProgress.py -d [DATADIRECTORY] -g [GENESOFINTERESTFILE] -s [SAMPLELABEL] -l [LOGFILENAME] -g1 [MARKERGENE1] -g2 [MARKERGENE2] -f [FILTEREDOUTFILENAME] -p [PLOTFILENAME] -n [NORMALIZEDOUTFILENAME]
 ```
-Ex: When I ran this script, I used the following command (all data and scripts were stored in the indicated directory):
+[DATADIRECTORY]: directory where your data is stored
+[GENESOFINTERESTFILE]: text file that contains your genes of interest that you would like to include in the final output
+[SAMPLELABEL]: label that describes your data (ex: Zone2MouseHeart)
+[LOGFILENAME]: the name you would like to give your logfile
+[MARKERGENE1]: a gene that is known to be a "marker" for your cell type of interest
+[MARKERGENE2]: a second gene that is known to be a "marker" for your cell type of interest (this argument is optional)
+[FILTEREDOUTFILENAME]: the name you would like to give the file that contains absolute gene expression data for your cell type of interest
+[PLOTFILENAME]: the name you would like to give the outputted plots
+[NORMALIZEDOUTFILENAME]: the name you would like to give the file that contains normalized gene expression data for your cell type of interest
+
+Ex: When I ran this script using data from Zone II of the mouse heart, I used the following command (all data and scripts were stored in the indicated directory):
 ```
-python3 runExperiment.py -d /Users/madelinehakala/mouse-heart-scRNA-seq-analysis -l logFile.txt
+python3 runExperimentChangesInProgress.py -d dataZone2 -s Zone2 -l Zone2LogFile.txt -g1 Myh6 -g2 Actc1 -f zone2_muscle_cells.csv -p zone2_muscle_cell_expression_data.png -n normalized_zone2_muscle_cells.csv
 ```
 
 ## Required Dependencies
