@@ -41,7 +41,7 @@ python3 runExperiment.py -d [DATADIRECTORY] -g [GENESOFINTERESTFILE] -s [SAMPLEL
 
 Ex: When I ran this script using data from Zone II of the mouse heart, I used the following command (all data and scripts were stored in the indicated directory):
 ```
-python3 runExperimentChangesInProgress.py -d dataZone2 -g muscle_contraction_genes.txt -s Zone2 -l Zone2LogFile.txt -g1 Myh6 -g2 Actc1 -f zone2_muscle_cells.csv -p zone2_muscle_cell_expression_data.png -n normalized_zone2_muscle_cells.csv
+python3 runExperiment.py -d dataZone2 -g muscle_contraction_genes.txt -s Zone2 -l Zone2LogFile.txt -g1 Myh6 -g2 Actc1 -f zone2_muscle_cells.csv -p zone2_muscle_cell_expression_data.png -n normalized_zone2_muscle_cells.csv
 ```
 
 ## Required Dependencies
