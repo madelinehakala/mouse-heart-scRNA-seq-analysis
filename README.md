@@ -9,7 +9,7 @@ The overall goal for this project was to build a pipeline that assesses the leve
 2. Assess expression levels of known marker genes for your cell type of interest (for us, these were Myh6 and Actc1).
 3. Select for your cell type of interest, filtering out other cell types, by utilizing the expression levels of the marker genes.
 4. Calculate the average expression levels of genes that you know to be implicated in your cell/tissue type of interest.
-5. Calculate the relative expression levels of the above genes in individual cells compared to the population average.
+5. Calculate the relative expression levels of the above genes in individual cells when compared to the population average.
 6. Output these findings to a well-organized csv file for additional analysis.
 7. Data visualization and additional analysis.
 
