@@ -41,14 +41,14 @@ python3 runExperiment.py -d dataZone2 -g muscle_contraction_genes.txt -s Zone2 -
 ## Data Formatting
 For Seurat (and the rest of our code) to work, data must be in a very specific format and placed in the corresponding directories. 
 
-Ex: One of data directories:
+Ex: 
+
 dataZone2 -> barcodes.tsv.gz features.tsv.gz matrix.mtx.gz
 
 To download the data that we analyzed for this project in the required format, run the following command:
 ```
 sh getData.sh
 ```
-If you are using your own data, just make sure it follows the appropriate format.
 
 ## Tutorial
 Follow the tutorial below (using the tutorial data found in this repository) to practice working with this pipeline.
@@ -67,4 +67,4 @@ Step 3:
 ```
 python3 runExperiment.py -d tutorial_data -g tutorial_genes_of_interest.txt -s tutorial -l tutorialLogFile.txt -g1 Myh6 -g2 Actc1 -f tutorial_muscle_cells.csv -p tutorial_muscle_cell_expression_data.png -n tutorial_normalized_muscle_cells.csv
 ```
-**When prompted to enter expression cutoffs for Myh6 and Actc1, enter 0.75 and 3, respectively.**
+When prompted to enter expression cutoffs for Myh6 and Actc1, enter 0.75 and 3, respectively.
