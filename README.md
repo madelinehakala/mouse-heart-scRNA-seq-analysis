@@ -1,7 +1,7 @@
 # Building a Pipeline for scRNA-Seq Analysis
 
 ## Overview
-Tje overall goal for this project is to build a pipeline that assesses the level of gene expression homogeneity exhibited by the muscle tissue of the heart (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE132658). In striving to complete this goal, however, we built a pipeine that is generalizable beyond the muscle cells of the heart. As long as data is in the correct format, this pipeline can be used to analyze a wide variety of scRNA-Seq datasets. 
+The overall goal for this project was to build a pipeline that assesses the level of gene expression homogeneity exhibited by the muscle tissue of the heart (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE132658). In striving to complete this goal, however, we built a pipeine that is generalizable beyond the muscle cells of the heart. As long as data is in the correct format, this pipeline can be used to analyze a wide variety of scRNA-Seq datasets. 
 **For detailed project design information, see the Design Document in the Wiki tab.**
 
 ## The Pipeline
